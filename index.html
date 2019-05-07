@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 13.3</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div id="result" class="">
+      <p></p>
+      <p></p>
+    </div>
+    <div class="buttons">
+      <h3>Choose your move</h3>
+      <button class="player-move" data-move="rock">Rock</button>
+      <button class="player-move" data-move="paper">Paper</button>
+      <button class="player-move" data-move="scissors">Scissors</button>
+    </div>
+    <div id="output" class="output">
+      <p></p>
+      <p></p>
+      <button id="new-game">New Game</button>
+    </div>
+    <div class="modal-overlay js-modal-overlay">
+      <div class="modal js-modal-gameover">
+        <p></p>
+        <table>
+          <thead>
+            <th>Round number</th>
+            <th>Player move</th>
+            <th>Computer move</th>
+            <th>Round score</th>
+            <th>Game score</th>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button class="button js-button-close">Exit</button>
+      </div>
+      <div class="modal js-modal-newgame">
+        <div class="modal-newgame-wrapper">
+          <div class="col-6">
+            <label class="label" for="playerName">Please enter your name: (alphabet characters)</label>
+            <br>
+            <label class="label" for="rounds">How many rounds you wish to play? (min.1)</label>
+          </div>
+          <div class="col-6">
+            <input id="playerName" class="input js-input-name" type="text" name="playerName" placeholder="e.g. John" pattern="^[a-zA-Z]+$" required>
+            <span></span>
+            <br><br>
+            <input id="rounds" class="input js-input-rounds" type="text" name="rounds" placeholder="e.g. 3" pattern="^[1-9]*$" required>
+            <span></span>
+          </div>
+        </div>
+          <button class="button js-button-start">Start</button>
+          <p id="demo"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
