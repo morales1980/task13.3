@@ -1,6 +1,6 @@
 "use strict";
 
-// (function(){
+(function(){
 
   //VARIABLES
 
@@ -11,16 +11,14 @@
     playerWinCounter:   "0",        //licznik zwyciestw gracza
     computerWinCounter: "0",        //licznik zwyciest komputera
     roundNumber:        "0",        //numer bieżącej rundy
-    progress:           [],         //tablica z informacjami opisujacymi przebieg rozgrywki
-    flagName:           undefined,  //flaga pozytywnej walidacji wartosci inputa
-    flagRounds:         undefined   //flaga pozytywnej walidacji wartosci inputa
+    progress:           []         //tablica z informacjami opisujacymi przebieg rozgrywki
   },
-	output =            document.querySelector('#output p'),
-  winInfoOutput =     document.querySelector('#output p:nth-child(2)'),
-	winConditionInfo =  document.querySelector('#result p:nth-child(2)'),
-	resultInfoOutput =  document.querySelector('#result p:nth-child(1)'),
-	controlButtons =    document.querySelectorAll('.player-move'),
-	newGameButton =     document.querySelector('#new-game'),
+	output =            document.querySelector('.js-output p'),
+  winInfoOutput =     document.querySelector('.js-output p:nth-child(2)'),
+	winConditionInfo =  document.querySelector('.js-result p:nth-child(2)'),
+	resultInfoOutput =  document.querySelector('.js-result p:nth-child(1)'),
+	controlButtons =    document.querySelectorAll('.js-player-move'),
+	newGameButton =     document.querySelector('.js-new-game'),
   modalOverlay =      document.querySelector('.js-modal-overlay'),
   allModals =         document.querySelectorAll('.modal'),
 	winInfoModal =      document.querySelector('.js-modal-gameover'),
@@ -30,50 +28,27 @@
   closeModalButtons = document.querySelectorAll('.js-button-close'),
   startGameButton =   document.querySelector('.js-button-start');
 
-  startGameButton.addEventListener('click', function(e) {
-    validateInputName();
-    validateInputRounds();
-
-    if(!params.flagName) {
-      inputName.classList.remove('valid');
-      inputName.classList.add('invalid');
-    }
-    if(params.flagName) {
-      inputName.classList.remove('invalid');
-      inputName.classList.add('valid');
-    }
-    if(!params.flagRounds) {
-      inputRounds.classList.remove('valid');
-      inputRounds.classList.add('invalid');
-    }
-    if(params.flagRounds) {
-      inputRounds.classList.remove('invalid');
-      inputRounds.classList.add('valid');
-    }
-    if(params.flagName === true && params.flagRounds === true) {
-      hideModalBackground();
-      hideModal(e.target.parentElement);
-      newGame();
-    }
-  });
-
   //FUNCTIONS
 
   function validateInputName() {  //waliduje zawartosc inputa
     var validatedObject = inputName;
 
     if (validatedObject.validity.patternMismatch) {
-      validatedObject.setCustomValidity('Please use Latin alphabet characters only!');
+      validatedObject.setCustomValidity('Please use latin alphabet characters only!');
       validatedObject.nextElementSibling.innerHTML = validatedObject.validationMessage;
-      params.flagName = false;
-    } else if(validatedObject.value === "") {
-      validatedObject.nextElementSibling.innerHTML = "Field must not be empty";
-      params.flagName = false;
-    } else {
-      params.flagName = true;
-    }
 
-    return params.flagName
+      return false;
+
+    } else if(validatedObject.value === "") {
+      validatedObject.nextElementSibling.innerHTML = "Field must not be empty!";
+
+      return false;
+
+    } else {
+      validatedObject.nextElementSibling.innerHTML = '';
+
+      return true;
+    }
   }
 
   function validateInputRounds() {  //waliduje zawartosc inputa
@@ -82,13 +57,19 @@
     if (validatedObject.validity.patternMismatch) {
       validatedObject.setCustomValidity('Please use numerical characters only!');
       validatedObject.nextElementSibling.innerHTML = validatedObject.validationMessage;
-      params.flagRounds = false;
+
+      return false;
+
     } else if(validatedObject.value === "") {
-      validatedObject.nextElementSibling.innerHTML = "Field must not be empty";
-      params.flagRounds = false;
+      validatedObject.nextElementSibling.innerHTML = "Field must not be empty!";
+
+      return false;
+
     }
     else {
-      params.flagRounds = true;
+      validatedObject.nextElementSibling.innerHTML = '';
+
+      return true;
     }
 
     return params.flagRounds
@@ -110,8 +91,6 @@
 		params.computerWinCounter = 0;
     params.roundNumber = 0;
     params.progress = [];
-    params.flagRounds = undefined;
-    params.flagName = undefined;
     inputRounds.classList.remove('valid');
     inputName.classList.remove('valid');
     inputRounds.nextElementSibling.innerHTML = "";
@@ -303,11 +282,33 @@
     resetInputs()
   });
 
-  // startGameButton.addEventListener('click', function(e) {
-  //   // hideModalBackground();
-  //   // hideModal(e.target.parentElement);
-  //   // newGame();
-  // });
+  startGameButton.addEventListener('click', function(e) {
+    var flagName = validateInputName();
+    var flagRounds = validateInputRounds();
+
+    if(!flagName) {
+      inputName.classList.remove('valid');
+      inputName.classList.add('invalid');
+    }
+    else {
+      inputName.classList.remove('invalid');
+      inputName.classList.add('valid');
+    }
+
+    if(!flagRounds) {
+      inputRounds.classList.remove('valid');
+      inputRounds.classList.add('invalid');
+    }
+    else {
+      inputRounds.classList.remove('invalid');
+      inputRounds.classList.add('valid');
+    }
+    if(flagName === true && flagRounds === true) {
+      hideModalBackground();
+      hideModal(e.target.parentElement);
+      newGame();
+    }
+  });
 
   closeModalButtons.forEach(function(button) {
     button.addEventListener('click', function(e) {
@@ -331,4 +332,4 @@
     });
   });
 
-// })();
+})();

@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   background: lightgrey;
 }
@@ -10,62 +6,40 @@ body {
   width: 100%;
   max-width: 767px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 5px;
   padding: 10px;
   text-align: center;
   margin-top: 30px;
-  background: white;
+  background: #fff;
 }
 
-#result p:nth-child(1) {
+.result p:nth-child(1) {
   font-size: 25px;
   font-weight: bold;
 }
 
 .modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: auto;
 }
 
 .modal {
   display: none;
-  width: 75%;
-  margin: 100px auto;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.button {
-  margin-top: 20px;
-  width: 100px;
-}
-
-.input {
   width: 100%;
-  outline: none;
-  padding: 10px;
-}
-
-/* .input:valid {
-  border: 2px solid lime;
-}
-
-.input:invalid {
-  border: 2px solid tomato;
-} */
-
-.valid {
-  border: 2px solid lime;
-}
-
-.invalid {
-  border: 2px solid tomato;
+  max-width: 767px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-top: 125px;
+  padding: 20px;
 }
 
 .show {
@@ -75,12 +49,6 @@ body {
 .modal-newgame-wrapper {
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
-}
-
-.modal-newgame .button {
-  margin: 0;
-  width: 100px;
 }
 
 .col-6 {
@@ -90,5 +58,44 @@ body {
 .label {
   display: block;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
+
+.input {
+  padding: 10px;
+  margin: 10px;
+  width: 75%;
+}
+
+.invalid {
+  border: 1px solid tomato;
+}
+
+.valid {
+  border: 1px solid lime;
+}
+
+.validation-message {
+  display: block;
+}
+
+.button {
+  padding: 5px;
+  width: 100px;
+}
+
+.button-start {
+  margin-top: 15px;
+  padding: 10px;
+  width: 150px;
+}
+
+.button-exit {
+  width: 150px;
+}
+
+.table {
+  margin: 0 auto;
+  padding: 10px;
+}
+/*# sourceMappingURL=style.prefixed.css.map */

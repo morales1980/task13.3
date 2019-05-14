@@ -9,25 +9,25 @@
 </head>
 <body>
   <div class="container">
-    <div id="result" class="">
+    <div class="result js-result">
       <p></p>
       <p></p>
     </div>
     <div class="buttons">
       <h3>Choose your move</h3>
-      <button class="player-move" data-move="rock">Rock</button>
-      <button class="player-move" data-move="paper">Paper</button>
-      <button class="player-move" data-move="scissors">Scissors</button>
+      <button class="button js-player-move" data-move="rock">Rock</button>
+      <button class="button js-player-move" data-move="paper">Paper</button>
+      <button class="button js-player-move" data-move="scissors">Scissors</button>
     </div>
-    <div id="output" class="output">
+    <div class="output js-output">
       <p></p>
       <p></p>
-      <button id="new-game">New Game</button>
+      <button class="button js-new-game">New Game</button>
     </div>
     <div class="modal-overlay js-modal-overlay">
       <div class="modal js-modal-gameover">
         <p></p>
-        <table>
+        <table class="table">
           <thead>
             <th>Round number</th>
             <th>Player move</th>
@@ -38,7 +38,7 @@
           <tbody>
           </tbody>
         </table>
-        <button class="button js-button-close">Exit</button>
+        <button class="button button-exit js-button-close">Exit</button>
       </div>
       <div class="modal js-modal-newgame">
         <div class="modal-newgame-wrapper">
@@ -49,14 +49,12 @@
           </div>
           <div class="col-6">
             <input id="playerName" class="input js-input-name" type="text" name="playerName" placeholder="e.g. John" pattern="^[a-zA-Z]+$" required>
-            <span></span>
-            <br><br>
+            <span class="validation-message"> </span>
             <input id="rounds" class="input js-input-rounds" type="text" name="rounds" placeholder="e.g. 3" pattern="^[1-9]*$" required>
-            <span></span>
+            <span class="validation-message"> </span>
           </div>
         </div>
-          <button class="button js-button-start">Start</button>
-          <p id="demo"></p>
+          <button class="button-start js-button-start">Start</button>
       </div>
     </div>
   </div>
